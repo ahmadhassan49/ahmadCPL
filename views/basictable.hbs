@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Leave Table</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body class="fix-header fix-sidebar card-no-border" style="background-color: #DFEDE2;">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <div id="main-wrapper">
+        {{> header }}
+        <div class="page-wrapper" style="background-color: #DFEDE2;">
+            <div class="container-fluid">
+                 <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav nav-wrap">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/dashboard"><i
+                                            class="fa-solid fa-gauge"></i> Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/profile"><i class="fas fa-user-check"></i> Profile</a>
+                                </li>
+                                {{!-- <li class="nav-item">
+                                    <a class="nav-link" href="/basic-table"><i class="fa-solid fa-calendar-days"></i>
+                                        Leave</a>
+                                </li> --}}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active-btn" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa-solid fa-calendar-days"></i>
+                                        Leave</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/basic-table">All Leaves</a></li>
+                                        <li><a class="dropdown-item" href="#">Leaves Qouta</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/attendance"><i class="fa-solid fa-file-pen"></i>
+                                        Attendance</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/createleave"><i class="fa-solid fa-plus"></i> Create
+                                        Leave</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register"><i class="fa-solid fa-plus"></i> Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/alluser"><i class="fa-solid fa-plus"></i> All user</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/role"><i class="fa-solid fa-plus"></i> Add Department</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                {{!-- <div class="row page-titles">
+                    <div class="col-md-5 col-8 align-self-center">
+                        <nav class="nav-wrap">
+                            <li> <a href="/dashboard"><i class="fa-solid fa-gauge"></i>
+                                    Dashboard</a> </li>
+                            <li> <a href="/profile"><i class="fas fa-user-check"></i> Profile</a></li>
+                            <li> <a class="active-btn" href="/basic-table"><i class="fa-solid fa-calendar-days"></i>
+                                    Leave</a> </li>
+                            <li> <a href="/attendance"><i class="fa-solid fa-file-pen"></i> Attendance</a> </li>
+                            <li> <a href="/createleave"><i class="fa-solid fa-plus"></i> Create Leave</a> </li>
+                            <li> <a href="/register"><i class="fa-solid fa-plus"></i> Register</a> </li>
+                            <li> <a href="/alluser"><i class="fa-solid fa-plus"></i> All user</a> </li>
+                            <li> <a href="/role"><i class="fa-solid fa-plus"></i>add department</a> </li>
+                        </nav>
+                    </div>
+                </div> --}}
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">Leave Table</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr.No</th>
+                                                <th>First Name</th>
+                                                <th>Designation</th>
+                                                <th>Reason</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Ahmad Hassan</td>
+                                                <td>CEO</td>
+                                                <td>Medical Checkup</td>
+                                                <td><a href="" class="waves-effect waves-dark">Detail</a>&nbsp; <a
+                                                        href=""
+                                                        class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Accepted</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Hamza</td>
+                                                <td>Team Lead</td>
+                                                <td>Bank Visit</td>
+                                                <td><a href="" class="waves-effect waves-dark">Detail</a>&nbsp; <a
+                                                        href=""
+                                                        class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Accepted</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Ilmas</td>
+                                                <td>Back-end Developer</td>
+                                                <td>Birthday</td>
+                                                <td><a href="" class="waves-effect waves-dark">Detail</a>&nbsp; <a
+                                                        href=""
+                                                        class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Accepted</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Zeshan</td>
+                                                <td>Back-end Developer</td>
+                                                <td>merriage</td>
+                                                <td><a href="" class="waves-effect waves-dark">Detail</a>&nbsp; <a
+                                                        href=""
+                                                        class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Accepted</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Tahaver</td>
+                                                <td>Team Lead</td>
+                                                <td>Medical Check-up</td>
+                                                <td><a href="" class="waves-effect waves-dark">Detail</a>&nbsp; <a
+                                                        href=""
+                                                        class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Accepted</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>Zohaib</td>
+                                                <td>Business Developer Executive</td>
+                                                <td>Blood test</td>
+                                                <td><a href="" class="waves-effect waves-dark">Detail</a>&nbsp; <a
+                                                        href=""
+                                                        class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down">Accepted</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- column -->
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">Leave Table</h4>
+                                <div class="table-responsive">
+                                    <table class="text-nowrap mb-0 table">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Employee name</th>
+                                                <th>Hours</th>
+                                                <th>priority</th>
+                                                <th>Members</th>
+                                                <th>Progress</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="pr-2">
+                                                                <img src="assets/images/avatar-1.jpg" alt=""
+                                                                    class="notification-dropdown-item-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ms-3 lh-1">
+                                                            <h5 class=" mb-1"><a class="text-inherit"
+                                                                    href="/profile">Ahmad Hassan</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">34</td>
+                                                <td class="align-middle"><span class="badge bg-warning">Medium</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="avatar-group"><span class="avatar avatar-sm"><img
+                                                                alt="avatar" src="assets/images/avatar-1.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-2.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-3.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm avatar-primary"><span
+                                                                class="avatar-initials rounded-circle fs-6">+5</span></span>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-dark">
+                                                    <div class="chart">
+                                                        <svg id="svg" viewbox="0 0 100 100">
+                                                            <path class="stroke-bg" id="stroke-bg"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <path class="stroke-active" id="stroke-active"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <text class="output" id="output" x="50" y="48"
+                                                                text-anchor="middle" dy="7" font-size="15">20</text>
+                                                        </svg>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="pr-2">
+                                                                <img src="assets/images/avatar-2.jpg" alt=""
+                                                                    class="notification-dropdown-item-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ms-3 lh-1">
+                                                            <h5 class=" mb-1"><a class="text-inherit"
+                                                                    href="/profile">Daniyal</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">47</td>
+                                                <td class="align-middle"><span class="badge bg-danger">High</span></td>
+                                                <td class="align-middle">
+                                                    <div class="avatar-group"><span class="avatar avatar-sm"><img
+                                                                alt="avatar" src="assets/images/avatar-4.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-5.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-6.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm avatar-primary"><span
+                                                                class="avatar-initials rounded-circle fs-6">+5</span></span>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-dark">
+                                                    <div class="chart">
+                                                        <svg id="svg" viewbox="0 0 100 100">
+                                                            <path class="stroke-bg" id="stroke-bg"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <path class="stroke-active" id="stroke-active"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <text class="output" id="output" x="50" y="48"
+                                                                text-anchor="middle" dy="7" font-size="15">40</text>
+                                                        </svg>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="pr-2">
+                                                                <img src="assets/images/avatar-3.jpg" alt=""
+                                                                    class="notification-dropdown-item-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ms-3 lh-1">
+                                                            <h5 class=" mb-1"><a class="text-inherit"
+                                                                    href="/profile">Ahmer</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">120</td>
+                                                <td class="align-middle"><span class="badge bg-info">Low</span></td>
+                                                <td class="align-middle">
+                                                    <div class="avatar-group"><span class="avatar avatar-sm"><img
+                                                                alt="avatar" src="assets/images/avatar-7.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-8.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-9.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm avatar-primary"><span
+                                                                class="avatar-initials rounded-circle fs-6">+5</span></span>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-dark">
+                                                    <div class="chart">
+                                                        <svg id="svg" viewbox="0 0 100 100">
+                                                            <path class="stroke-bg" id="stroke-bg"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <path class="stroke-active" id="stroke-active"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <text class="output" id="output" x="50" y="48"
+                                                                text-anchor="middle" dy="7" font-size="15">40</text>
+                                                        </svg>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="pr-2">
+                                                                <img src="assets/images/avatar-4.jpg" alt=""
+                                                                    class="notification-dropdown-item-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ms-3 lh-1">
+                                                            <h5 class=" mb-1"><a class="text-inherit"
+                                                                    href="/profile">Amad</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">89</td>
+                                                <td class="align-middle"><span class="badge bg-warning">Medium</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="avatar-group"><span class="avatar avatar-sm"><img
+                                                                alt="avatar" src="assets/images/avatar-10.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-11.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-12.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm avatar-primary"><span
+                                                                class="avatar-initials rounded-circle fs-6">+5</span></span>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-dark">
+                                                    <div class="chart">
+                                                        <svg id="svg" viewbox="0 0 100 100">
+                                                            <path class="stroke-bg" id="stroke-bg"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <path class="stroke-active" id="stroke-active"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <text class="output" id="output" x="50" y="48"
+                                                                text-anchor="middle" dy="7" font-size="15">40</text>
+                                                        </svg>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="pr-2">
+                                                                <img src="assets/images/avatar-5.jpg" alt=""
+                                                                    class="notification-dropdown-item-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ms-3 lh-1">
+                                                            <h5 class=" mb-1"><a class="text-inherit"
+                                                                    href="/profile">Ilmas</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">108</td>
+                                                <td class="align-middle"><span class="badge bg-success">Track</span>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="avatar-group"><span class="avatar avatar-sm"><img
+                                                                alt="avatar" src="assets/images/avatar-13.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-14.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images-15.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm avatar-primary"><span
+                                                                class="avatar-initials rounded-circle fs-6">+5</span></span>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-dark">
+                                                    <div class="chart">
+                                                        <svg id="svg" viewbox="0 0 100 100">
+                                                            <path class="stroke-bg" id="stroke-bg"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <path class="stroke-active" id="stroke-active"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <text class="output" id="output" x="50" y="48"
+                                                                text-anchor="middle" dy="7" font-size="15">40</text>
+                                                        </svg>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="align-middle">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <div class="pr-2">
+                                                                <img src="assets/images/avatar-6.jpg" alt=""
+                                                                    class="notification-dropdown-item-image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="ms-3 lh-1">
+                                                            <h5 class=" mb-1"><a class="text-inherit"
+                                                                    href="/profile">Zohaib</a></h5>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle">120</td>
+                                                <td class="align-middle"><span class="badge bg-info">Low</span></td>
+                                                <td class="align-middle">
+                                                    <div class="avatar-group"><span class="avatar avatar-sm"><img
+                                                                alt="avatar" src="assets/images-16.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images-17.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm"><img alt="avatar"
+                                                                src="assets/images/avatar-18.jpg"
+                                                                class="rounded-circle"></span><span
+                                                            class="avatar avatar-sm avatar-primary"><span
+                                                                class="avatar-initials rounded-circle fs-6">+5</span></span>
+                                                    </div>
+                                                </td>
+                                                <td class="align-middle text-dark">
+                                                    <div class="chart">
+                                                        <svg id="svg" viewbox="0 0 100 100">
+                                                            <path class="stroke-bg" id="stroke-bg"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <path class="stroke-active" id="stroke-active"
+                                                                d="M50 10 a 40 40 0 0 1 0 80 a 40 40 0 0 1 0 -80" />
+                                                            <text class="output" id="output" x="50" y="48"
+                                                                text-anchor="middle" dy="7" font-size="15">40</text>
+                                                        </svg>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    {{!--
+    <script src="assets/plugins/bootstrap/js/tether.min.js"></script> --}}
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    {{!--
+    <script src="js/jquery.slimscroll.js"></script> --}}
+    <!--Wave Effects -->
+    {{!--
+    <script src="js/waves.js"></script> --}}
+    <!--Menu sidebar -->
+    {{!--
+    <script src="js/sidebarmenu.js"></script> --}}
+    <!--stickey kit -->
+
+    {{!--
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script> --}}
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script>
+        var stroke_active = document.getElementById('stroke-active');
+        var stroke_bg = document.getElementById('stroke-bg');
+        var output = document.getElementById('output')
+        var $output = $("#output"),
+            $pie = $(".chart svg #stroke-active");
+
+        update();
+
+        function update() {
+            var sliderValue = parseFloat($output.text());
+            console.log(sliderValue);
+            if (sliderValue < 30) {
+                stroke_active.style.stroke = '#bb2d3b9e';
+                stroke_bg.style.stroke = '#e71b2e75';
+                output.style.fill = '#bb2d3b9e';
+            } else if (sliderValue < 70) {
+                stroke_active.style.stroke = '#1be7e775';
+                stroke_bg.style.stroke = '#1be7e74f';
+                output.style.fill = '#1be7e775';
+            }
+            $output.html(sliderValue + "%");
+            // $pie.css({ "stroke-dasharray": 252.2 - sliderValue * 2.522 + " 252.2" });
+            $pie.css({ "stroke-dasharray": sliderValue * 2.522 + " 252.2" });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Add hover functionality to dropdown
+            $('.nav-item.dropdown').hover(function () {
+                $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(300);
+            }, function () {
+                $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(300);
+            });
+        });
+    </script>
+</body>
+
+</html>

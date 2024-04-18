@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="14x14" href="assets/images/favicon.png">
+    <title>Leave Portal</title>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border" style="background-color: #DFEDE2;">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <div id="main-wrapper">
+        {{> header }}
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                 <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav nav-wrap">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/dashboard"><i
+                                            class="fa-solid fa-gauge"></i> Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/profile"><i class="fas fa-user-check"></i> Profile</a>
+                                </li>
+                                {{!-- <li class="nav-item">
+                                    <a class="nav-link" href="/basic-table"><i class="fa-solid fa-calendar-days"></i>
+                                        Leave</a>
+                                </li> --}}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa-solid fa-calendar-days"></i>
+                                        Leave</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/basic-table">All Leaves</a></li>
+                                        <li><a class="dropdown-item" href="#">Leaves Qouta</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/attendance"><i class="fa-solid fa-file-pen"></i>
+                                        Attendance</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/createleave"><i class="fa-solid fa-plus"></i> Create
+                                        Leave</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active-btn" href="/register"><i class="fa-solid fa-plus"></i> Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/alluser"><i class="fa-solid fa-plus"></i> All user</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/role"><i class="fa-solid fa-plus"></i> Add Department</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                {{!-- <div class="row page-titles">
+                    <div class="col-md-12 align-self-center">
+                        <nav class="nav-wrap">
+                            <li> <a href="/dashboard"><i class="fa-solid fa-gauge"></i>
+                                    Dashboard</a> </li>
+                            <li> <a href="/profile"><i class="fas fa-user-check"></i> Profile</a></li>
+                            <li> <a href="/basic-table"><i class="fa-solid fa-calendar-days"></i> Leave</a> </li>
+                            <li> <a href="/attendance"><i class="fa-solid fa-file-pen"></i> Attendance</a> </li>
+                            <li> <a href="/createleave"><i class="fa-solid fa-plus"></i> Create Leave</a> </li>
+                            <li> <a class="active-btn" href="/register"><i class="fa-solid fa-plus"></i>
+                                    Register</a> </li>
+                            <li> <a href="/alluser"><i class="fa-solid fa-plus"></i> All user</a> </li>
+                            <li> <a href="/role"><i class="fa-solid fa-plus"></i>add department</a> </li>
+                        </nav>
+                    </div>
+                </div> --}}
+
+                <div class="row" style="justify-content: center;">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div id="form_alert" class="" role="alert">
+                            </div>
+                            <div class="card-block">
+                                <h3 class="card-title">User Register</h3>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <form id="form">
+                                            <div class="row my-4">
+                                                <div class="col" style="position: relative;">
+                                                    <input type="email" id="email" class="form-control"
+                                                        placeholder="Email" name="email">
+                                                    <span class="small">Error Message</span>
+                                                </div>
+                                                <div class="col" style="position: relative;">
+                                                    <input type="text" id="designation" class="form-control"
+                                                        placeholder="Designation" name="designation">
+                                                    <span class="small">Error Message</span>
+                                                </div>
+                                            </div>
+                                            <div class="row my-4">
+                                                <div class="col" style="position: relative;">
+                                                    <input type="password" id="password" class="ey form-control"
+                                                        placeholder="Password" name="password">
+                                                        <i class="eye fas fa-eye-slash"></i>
+                                                    <span class="small">Error Message</span>
+                                                </div>
+                                                <div class="col" style="position: relative;">
+                                                    <input type="password" class="ey form-control" id="password2"
+                                                        placeholder="Confirm password" name="cpassword">
+                                                        <i class="eye fas fa-eye-slash"></i>
+                                                    <span class="small">Error Message</span>
+                                                </div>
+                                            </div>
+                                            <div class="row my-4">
+                                                <div class="col" style="position: relative;">
+                                                    <input type="text" class="form-control" placeholder="First Name"
+                                                        id="fname" name="f_name">
+                                                    <span class="small">Error Message</span>
+                                                </div>
+                                                <div class="col" style="position: relative;">
+                                                    <input type="text" class="form-control" placeholder="Last Name"
+                                                        id="lname" name="l_name">
+                                                    <span class="small">Error Message</span>
+                                                </div>
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class="col">
+                                                    <select id="department" class="form-control" name="department">
+                                                        <option selected>Department</option>
+                                                        {{#each alldeptname }}
+                                                        <option>{{this}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                                <div class="col">
+                                                    <select id="role" class="form-control" name="role">
+                                                        <option selected>Select Role</option>
+                                                        {{#each alldeptrole}}
+                                                        <option>{{this}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row my-3">
+                                                <div class="col">
+                                                    <select id="empstatus" class="form-control" name="emp_status">
+                                                        <option selected>Employment Status</option>
+                                                        {{#each alldeptname }}
+                                                        <option>{{this}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-primary active-btn">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script>
+    const eyes = document.getElementsByClassName('eye');
+    const eys = document.getElementsByClassName('ey');
+    for (let i = 0; i < eyes.length; i++) {
+      eyes[i].addEventListener('click', () => {
+        eyes[i].classList.toggle("fa-eye");
+        eyes[i].classList.toggle("fa-eye-slash");
+        eys[i].type = (eys[i].type === 'password') ? 'text' : 'password';
+      });
+    }
+  </script>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/formvalidation.js"></script>
+  <script>
+        $(document).ready(function () {
+            // Add hover functionality to dropdown
+            $('.nav-item.dropdown').hover(function () {
+                $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(300);
+            }, function () {
+                $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(300);
+            });
+        });
+    </script>
+</body>
+
+</html>

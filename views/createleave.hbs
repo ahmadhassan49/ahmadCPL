@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="14x14" href="assets/images/favicon.png">
+    <title>Leave Portal</title>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border" style="background-color: #DFEDE2;">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <div id="main-wrapper">
+        {{> header }}
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                 <nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav nav-wrap">
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/dashboard"><i
+                                            class="fa-solid fa-gauge"></i> Dashboard</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/profile"><i class="fas fa-user-check"></i> Profile</a>
+                                </li>
+                                {{!-- <li class="nav-item">
+                                    <a class="nav-link" href="/basic-table"><i class="fa-solid fa-calendar-days"></i>
+                                        Leave</a>
+                                </li> --}}
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false"><i class="fa-solid fa-calendar-days"></i>
+                                        Leave</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="/basic-table">All Leaves</a></li>
+                                        <li><a class="dropdown-item" href="#">Leaves Qouta</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/attendance"><i class="fa-solid fa-file-pen"></i>
+                                        Attendance</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active-btn" href="/createleave"><i class="fa-solid fa-plus"></i> Create
+                                        Leave</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register"><i class="fa-solid fa-plus"></i> Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/alluser"><i class="fa-solid fa-plus"></i> All user</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/role"><i class="fa-solid fa-plus"></i> Add Department</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                {{!-- <div class="row page-titles">
+                    <div class="col-md-12 align-self-center">
+                        <nav class="nav-wrap">
+                            <li> <a href="/dashboard"><i class="fa-solid fa-gauge"></i>
+                                    Dashboard</a> </li>
+                            <li> <a href="/profile"><i class="fas fa-user-check"></i> Profile</a></li>
+                            <li> <a href="/basic-table"><i class="fa-solid fa-calendar-days"></i> Leave</a> </li>
+                            <li> <a href="/attendance"><i class="fa-solid fa-file-pen"></i> Attendance</a> </li>
+                            <li> <a class="active-btn" href="/createleave"><i class="fa-solid fa-plus"></i> Create
+                                    Leave</a> </li>
+                            <li> <a href="/register"><i class="fa-solid fa-plus"></i> Register</a> </li>
+                            <li> <a href="/alluser"><i class="fa-solid fa-plus"></i> All user</a> </li>
+                            <li> <a href="/role"><i class="fa-solid fa-plus"></i>add department</a> </li>
+                        </nav>
+                    </div>
+                </div> --}}
+                <div class="row">
+                    <div class="col-lg-7 col-md-5">
+                        <div class="card">
+                            <div class="card-block">
+                                <h3 class="card-title">Create Leave</h3>
+                                <form>
+                                    <div class="row my-3">
+                                        <div class="col">
+                                            <select id="inputState" class="form-control" name="leave-type">
+                                                <option disabled selected>Leave Type</option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <select id="inputState" class="form-control" name="duration">
+                                                <option disabled selected>Duration</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row my-3">
+                                        <div class="col">
+                                            <input type="date" class="DateInput form-control" placeholder="From Date"
+                                                required>
+                                        </div>
+                                        <div class="col">
+                                            <input type="date" class="DateInput form-control" placeholder="To Date"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="row my-3">
+                                        <div class="col">
+                                            <input type="file" class="form-control" placeholder="Password" required>
+                                        </div>
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="row my-3">
+                                        <div class="col">
+                                            <select id="inputState" class="form-control" name="reason">
+                                                <option selected>Select Reason</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Other Reason" id="floatingTextarea"
+                                            style="height: 115px" required></textarea>
+                                    </div>
+                                    <button type="submit" class="active-btn btn btn-info">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5">
+                        <div class="card">
+                            <div class="card-block">
+                                <h3 class="card-title">Leave Balance </h3>
+                                <h6 class="card-subtitle">Different Devices Used to Visit</h6>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Total</th>
+                                                <th>Approve</th>
+                                                <th>Pending</th>
+                                                <th>Resubmit</th>
+                                                <th>Balance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Sick</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Emergency</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Casual</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Birthday</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CPL</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                            </tr>
+                                            <tr>
+                                                <td>LWOP</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                                <td>12</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-7">
+                        <div class="card">
+                            <div class="card-block">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <h3 class="card-title">Leave Application</h3>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-primary">Application Data</th>
+                                                        <th class="text-primary">Leave Type</th>
+                                                        <th class="text-primary">From</th>
+                                                        <th class="text-primary">To</th>
+                                                        <th class="text-primary">Total Days</th>
+                                                        <th class="text-primary">LM Status</th>
+                                                        <th class="text-primary">HR Status</th>
+                                                        <th class="text-primary">Violation</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-primary">28-Dec-2023</td>
+                                                        <td>Annual</td>
+                                                        <td>29-Dec-2023</td>
+                                                        <td>03-Jan-2023</td>
+                                                        <td>06</td>
+                                                        <td class="text-warning">Pending</td>
+                                                        <td class="text-warning">Pending</td>
+                                                        <td>No</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-primary">28-Dec-2023</td>
+                                                        <td>Annual</td>
+                                                        <td>29-Dec-2023</td>
+                                                        <td>03-Jan-2023</td>
+                                                        <td>06</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td>No</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-primary">28-Dec-2023</td>
+                                                        <td>Annual</td>
+                                                        <td>29-Dec-2023</td>
+                                                        <td>03-Jan-2023</td>
+                                                        <td>06</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td>No</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-primary">28-Dec-2023</td>
+                                                        <td>Annual</td>
+                                                        <td>29-Dec-2023</td>
+                                                        <td>03-Jan-2023</td>
+                                                        <td>06</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-danger">Yes</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-primary">28-Dec-2023</td>
+                                                        <td>Annual</td>
+                                                        <td>29-Dec-2023</td>
+                                                        <td>03-Jan-2023</td>
+                                                        <td>06</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-danger">Yes</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-primary">28-Dec-2023</td>
+                                                        <td>Annual</td>
+                                                        <td>29-Dec-2023</td>
+                                                        <td>03-Jan-2023</td>
+                                                        <td>06</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td class="text-succes">Approve</td>
+                                                        <td>No</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const first = document.getElementsByName('leave-type')[0];
+        const second = document.getElementsByName('duration')[0];
+        const third = document.getElementsByName('reason')[0];
+        const initial = second.innerHTML;
+        const secondinitial = third.innerHTML;
+        const optionMap = {
+            Sick: ['Full', 'Half', 'Short'],
+            Emergency: ['Full', 'Half', 'Short'],
+            Casual: ['Full', 'Half'],
+            Short: ['2 Hour', 'Half'],
+            Birthday: ['Full', 'Half', 'Short'],
+            Annual: ['Full'],
+            Pilgrimage: ['Full']
+        };
+        const reasonMap = {
+            Sick: ['Medical Checkup', 'Blood Test', 'Operation', 'Hospital Visit', 'Physiotherapy', 'Kidney Dialysis', 'Ultrasound'],
+            Emergency: ['Accident', 'Bank visit', 'Family Medical', 'other'],
+            Casual: ['on Merriage', 'Trip', 'Family Marriage', 'Other'],
+            Annual: ['on Merriage', 'Trip', 'Family Marriage', 'Other'],
+            Short: ['Medical Checkup', 'Blood Test', 'Operation', 'Hospital Visit', 'Physiotherapy', 'Kidney Dialysis', 'Ultrasound'],
+            Pilgrimage: ['Hajj', 'Umrah', 'Itikaf', 'Islamic visit'],
+            Birthday: ['Celebration']
+        }
+
+
+        function addOption(selectElement, text) {
+            let option = document.createElement('option');
+            option.value = text;
+            option.textContent = text;
+            selectElement.append(option);
+        }
+
+        // Fill the first selector
+        Object.keys(optionMap).forEach(text => addOption(first, text));
+
+        // And only fill the second selector when we know the first value
+        first.addEventListener('change', evt => {
+            second.innerHTML = initial;
+            third.innerHTML = secondinitial;
+            optionMap[evt.target.value].forEach(text => addOption(second, text));
+            reasonMap[evt.target.value].forEach(text => addOption(third, text));
+
+        });
+    </script>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Add hover functionality to dropdown
+            $('.nav-item.dropdown').hover(function () {
+                $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(300);
+            }, function () {
+                $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(300);
+            });
+        });
+    </script>
+</body>
+
+</html>
